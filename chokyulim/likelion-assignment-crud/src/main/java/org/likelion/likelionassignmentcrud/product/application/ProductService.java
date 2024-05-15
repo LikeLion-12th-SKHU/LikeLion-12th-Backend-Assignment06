@@ -48,6 +48,7 @@ public class ProductService {
     }
 
     // 업데이트
+    @Transactional
     public void productUpdate(Long productId, ProductUpdateReqDto productUpdateReqDto) {
         Product product = productRepository.findById(productId).orElseThrow
                 (() -> new IllegalArgumentException("productId가 없다." + productId));

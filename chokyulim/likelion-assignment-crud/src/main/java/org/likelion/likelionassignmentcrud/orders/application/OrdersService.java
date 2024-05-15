@@ -54,6 +54,7 @@ public class OrdersService {
     }
 
     // 업데이트
+    @Transactional
     public void ordersUpdate(Long ordersId, OrdersUpdateReqDto ordersUpdateReqDto) {
         Orders orders = ordersRepository.findById(ordersId).orElseThrow
                 (() -> new IllegalArgumentException("ordersId가 없다." + ordersId));
