@@ -1,0 +1,8 @@
+POST http://localhost:8080/professor/save
+Content-Type: application/json
+
+{
+  "name": "이승진",
+  "age" : 55,
+  "department": "SOFTWARE"
+}
