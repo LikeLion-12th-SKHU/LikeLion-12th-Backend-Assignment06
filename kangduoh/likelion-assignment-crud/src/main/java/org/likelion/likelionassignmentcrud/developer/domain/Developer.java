@@ -17,11 +17,9 @@ import java.util.List;
 public class Developer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "developer_id")
-    private Long developerId;
-
+    @Column(name = "developer_name", nullable = false, unique = true)
     private String name;
+
     private String country;
     private String establishedDate;
 
@@ -36,7 +34,6 @@ public class Developer {
     }
 
     public void update(DeveloperUpdateReqDto developerUpdateReqDto) {
-        this.name = developerUpdateReqDto.name();
         this.country = developerUpdateReqDto.country();
         this.establishedDate = developerUpdateReqDto.establishedDate();
     }

@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Service
 @Transactional(readOnly = true)
 public class DeveloperService {
     private final DeveloperRepository developerRepository;
+    private static final String NAME_PATTERN = "^[a-zA-Z0-9]*$";
 
     public DeveloperService(DeveloperRepository developerRepository) {
         this.developerRepository = developerRepository;
@@ -23,8 +25,12 @@ public class DeveloperService {
     // 개발사 저장
     @Transactional
     public void developerSave(DeveloperSaveReqDto developerSaveReqDto) {
+        if (!Pattern.matches(NAME_PATTERN, developerSaveReqDto.developerName())) {
+            throw new IllegalArgumentException("개발사 이름은 영문자와 숫자만 포함 가능합니다.");
+        }
+
         Developer developer = Developer.builder()
-                .name(developerSaveReqDto.name())
+                .name(developerSaveReqDto.developerName())
                 .country(developerSaveReqDto.country())
                 .establishedDate(developerSaveReqDto.establishedDate())
                 .build();
@@ -44,24 +50,24 @@ public class DeveloperService {
     }
 
     // 개발사 조회(하나)
-    public DeveloperInfoResDto developerFindOne(Long developerId) {
-        Developer developer = developerRepository.findById(developerId).orElseThrow(IllegalArgumentException::new);
+    public DeveloperInfoResDto developerFindOne(String developerName) {
+        Developer developer = developerRepository.findByName(developerName).orElseThrow(IllegalArgumentException::new);
 
         return DeveloperInfoResDto.from(developer);
     }
 
     // 개발사 업데이트(이름, 국가, 설립일)
     @Transactional
-    public void developerUpdate(Long developerId, DeveloperUpdateReqDto developerUpdateReqDto) {
-        Developer developer = developerRepository.findById(developerId).orElseThrow(IllegalArgumentException::new);
+    public void developerUpdate(String developerName, DeveloperUpdateReqDto developerUpdateReqDto) {
+        Developer developer = developerRepository.findByName(developerName).orElseThrow(IllegalArgumentException::new);
 
         developer.update(developerUpdateReqDto);
     }
 
     // 개발사 삭제
     @Transactional
-    public void developerDelete(Long developerId) {
-        Developer developer = developerRepository.findById(developerId).orElseThrow(IllegalArgumentException::new);
+    public void developerDelete(String developerName) {
+        Developer developer = developerRepository.findByName(developerName).orElseThrow(IllegalArgumentException::new);
 
         developerRepository.delete(developer);
     }

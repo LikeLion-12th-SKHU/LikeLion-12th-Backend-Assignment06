@@ -32,24 +32,29 @@ public class DeveloperController {
         return new ResponseEntity<>(developerListResDto, HttpStatus.OK);
     }
 
-    @GetMapping("/{developerId}")
-    public ResponseEntity<DeveloperInfoResDto> developerFindOne(@PathVariable("developerId") Long developerId) {
-        DeveloperInfoResDto developerInfoResDto = developerService.developerFindOne(developerId);
+    @GetMapping("/{developerName}")
+    public ResponseEntity<DeveloperInfoResDto> developerFindOne(@PathVariable("developerName") String developerName) {
+        DeveloperInfoResDto developerInfoResDto = developerService.developerFindOne(developerName);
 
         return new ResponseEntity<>(developerInfoResDto, HttpStatus.OK);
     }
 
-    @PatchMapping("/{developerId}")
-    public ResponseEntity<String> developerUpdate(@PathVariable("developerId") Long developerId, @RequestBody DeveloperUpdateReqDto developerUpdateReqDto) {
-        developerService.developerUpdate(developerId, developerUpdateReqDto);
+    @PatchMapping("/{developerName}")
+    public ResponseEntity<String> developerUpdate(@PathVariable("developerName") String developerName, @RequestBody DeveloperUpdateReqDto developerUpdateReqDto) {
+        developerService.developerUpdate(developerName, developerUpdateReqDto);
 
         return new ResponseEntity<>("개발사 수정", HttpStatus.OK);
     }
 
-    @DeleteMapping("/{developerId}")
-    public ResponseEntity<String> developerDelete(@PathVariable("developerId") Long developerId) {
-        developerService.developerDelete(developerId);
+    @DeleteMapping("/{developerName}")
+    public ResponseEntity<String> developerDelete(@PathVariable("developerName") String developerName) {
+        developerService.developerDelete(developerName);
 
         return new ResponseEntity<>("개발사 삭제", HttpStatus.OK);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
