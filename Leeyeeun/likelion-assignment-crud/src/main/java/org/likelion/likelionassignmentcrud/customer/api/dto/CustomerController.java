@@ -41,13 +41,13 @@ public class CustomerController {
     public ResponseEntity<String> customerUpdate(@PathVariable("customerId") Long customerId,
                                                  @RequestBody CustomerUpdateReqDto customerUpdateReqDto) {
         customerService.customerUpdate(customerId, customerUpdateReqDto);
-        return new ResponseEntity<>("사용자 수정", HttpStatus.OK);
+        return new ResponseEntity<>("고객 수정", HttpStatus.OK);
     }
 
     @DeleteMapping("/{customerId}")
     public ResponseEntity<String> customerDelete(@PathVariable("customerId") Long customerId) {
         customerService.customerDelete(customerId);
-        return new ResponseEntity<>("사용자 삭제", HttpStatus.OK);
+        return new ResponseEntity<>("고객 삭제", HttpStatus.OK);
     }
 
 }
