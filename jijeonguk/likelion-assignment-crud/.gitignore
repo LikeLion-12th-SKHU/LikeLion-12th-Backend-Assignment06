@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+## git 숨기기
+src/**/application-prod.yml
