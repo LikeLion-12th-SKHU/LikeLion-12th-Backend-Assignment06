@@ -35,6 +35,5 @@ public class Developer {
 
     public void update(DeveloperUpdateReqDto developerUpdateReqDto) {
         this.country = developerUpdateReqDto.country();
-        this.establishedDate = developerUpdateReqDto.establishedDate();
     }
 }

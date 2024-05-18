@@ -26,8 +26,8 @@ public class GameController {
 
     // 개발사에 따른 게임 리스트 불러오기
     @GetMapping("/developer/{developerName}")
-    public ResponseEntity<GameListResDto> myGameFindAllByDeveloper(@PathVariable("developerName") String developerName) {
-        GameListResDto gameListResDto = gameService.gameFindDeveloperByName(developerName);
+    public ResponseEntity<GameListResDto> gameFindAllByDeveloperName(@PathVariable("developerName") String developerName) {
+        GameListResDto gameListResDto = gameService.gameFindAllByDeveloperName(developerName);
 
         return new ResponseEntity<>(gameListResDto, HttpStatus.OK);
     }

@@ -16,6 +16,8 @@ import java.util.regex.Pattern;
 @Transactional(readOnly = true)
 public class DeveloperService {
     private final DeveloperRepository developerRepository;
+
+    // TODO : 정규 표현식 대신 @Valid 어노테이션을 사용하여 유효성 검사 구현
     private static final String NAME_PATTERN = "^[a-zA-Z0-9]*$";
 
     public DeveloperService(DeveloperRepository developerRepository) {
@@ -25,12 +27,12 @@ public class DeveloperService {
     // 개발사 저장
     @Transactional
     public void developerSave(DeveloperSaveReqDto developerSaveReqDto) {
-        if (!Pattern.matches(NAME_PATTERN, developerSaveReqDto.developerName())) {
+        if (!Pattern.matches(NAME_PATTERN, developerSaveReqDto.name())) {
             throw new IllegalArgumentException("개발사 이름은 영문자와 숫자만 포함 가능합니다.");
         }
 
         Developer developer = Developer.builder()
-                .name(developerSaveReqDto.developerName())
+                .name(developerSaveReqDto.name())
                 .country(developerSaveReqDto.country())
                 .establishedDate(developerSaveReqDto.establishedDate())
                 .build();

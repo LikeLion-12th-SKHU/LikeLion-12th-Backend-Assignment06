@@ -39,5 +39,6 @@ public class Game {
     public void update(GameUpdateReqDto gameUpdateReqDto) {
         this.name = gameUpdateReqDto.name();
         this.genre = gameUpdateReqDto.genre();
+        this.platform = gameUpdateReqDto.platform();
     }
 }

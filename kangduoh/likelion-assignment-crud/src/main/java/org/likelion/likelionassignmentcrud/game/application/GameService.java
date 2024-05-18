@@ -27,7 +27,7 @@ public class GameService {
     // Create
     @Transactional
     public void gameSave(GameSaveReqDto gameSaveReqDto) {
-        Developer developer = developerRepository.findByName(gameSaveReqDto.developerName())
+        Developer developer = developerRepository.findByName(gameSaveReqDto.developer())
                 .orElseThrow(IllegalArgumentException::new);
 
         Game game = Game.builder()
@@ -41,7 +41,7 @@ public class GameService {
     }
 
     // 개발사에 따른 게임 리스트 조회
-    public GameListResDto gameFindDeveloperByName(String developerName) {
+    public GameListResDto gameFindAllByDeveloperName(String developerName) {
         Developer developer = developerRepository.findByName(developerName)
                 .orElseThrow(() -> new IllegalArgumentException("해당 개발사를 찾을 수 없습니다."));
 
