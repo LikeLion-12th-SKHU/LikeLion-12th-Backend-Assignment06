@@ -25,7 +25,7 @@ public class Game {
     private Platform platform;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "developer_name")
+    @JoinColumn(name = "developer_id")
     private Developer developer;
 
     @Builder

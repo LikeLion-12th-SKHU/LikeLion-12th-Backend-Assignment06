@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.likelion.likelionassignmentcrud.developer.api.dto.request.DeveloperUpdateReqDto;
 import org.likelion.likelionassignmentcrud.game.domain.Game;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +18,21 @@ import java.util.List;
 public class Developer {
 
     @Id
-    @Column(name = "developer_name", nullable = false, unique = true)
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "developer_id")
+    private Long developerId;
 
+    private String name;
     private String country;
-    private String establishedDate;
+
+    @Column(name = "established_date")
+    private LocalDate establishedDate;
 
     @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Game> games = new ArrayList<>();
 
     @Builder
-    private Developer(String name, String country, String establishedDate) {
+    private Developer(String name, String country, LocalDate establishedDate) {
         this.name = name;
         this.country = country;
         this.establishedDate = establishedDate;

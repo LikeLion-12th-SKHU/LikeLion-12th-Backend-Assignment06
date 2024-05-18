@@ -27,7 +27,7 @@ public class GameService {
     // Create
     @Transactional
     public void gameSave(GameSaveReqDto gameSaveReqDto) {
-        Developer developer = developerRepository.findByName(gameSaveReqDto.developer())
+        Developer developer = developerRepository.findById(gameSaveReqDto.developerId())
                 .orElseThrow(IllegalArgumentException::new);
 
         Game game = Game.builder()

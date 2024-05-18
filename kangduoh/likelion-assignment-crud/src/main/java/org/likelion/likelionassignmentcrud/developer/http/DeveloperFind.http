@@ -2,4 +2,4 @@
 GET http://localhost:8080/developer/developers
 
 ### 개발사 조회(하나)
-GET http://localhost:8080/developer/Nexon
+GET http://localhost:8080/developer/2

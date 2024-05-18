@@ -32,23 +32,23 @@ public class DeveloperController {
         return new ResponseEntity<>(developerListResDto, HttpStatus.OK);
     }
 
-    @GetMapping("/{developerName}")
-    public ResponseEntity<DeveloperInfoResDto> developerFindOne(@PathVariable("developerName") String developerName) {
-        DeveloperInfoResDto developerInfoResDto = developerService.developerFindOne(developerName);
+    @GetMapping("/{developerId}")
+    public ResponseEntity<DeveloperInfoResDto> developerFindOne(@PathVariable("developerId") Long developerId) {
+        DeveloperInfoResDto developerInfoResDto = developerService.developerFindOne(developerId);
 
         return new ResponseEntity<>(developerInfoResDto, HttpStatus.OK);
     }
 
-    @PatchMapping("/{developerName}")
-    public ResponseEntity<String> developerUpdate(@PathVariable("developerName") String developerName, @RequestBody DeveloperUpdateReqDto developerUpdateReqDto) {
-        developerService.developerUpdate(developerName, developerUpdateReqDto);
+    @PatchMapping("/{developerId}")
+    public ResponseEntity<String> developerUpdate(@PathVariable("developerId") Long developerId, @RequestBody DeveloperUpdateReqDto developerUpdateReqDto) {
+        developerService.developerUpdate(developerId, developerUpdateReqDto);
 
         return new ResponseEntity<>("개발사 수정", HttpStatus.OK);
     }
 
-    @DeleteMapping("/{developerName}")
-    public ResponseEntity<String> developerDelete(@PathVariable("developerName") String developerName) {
-        developerService.developerDelete(developerName);
+    @DeleteMapping("/{developerId}")
+    public ResponseEntity<String> developerDelete(@PathVariable("developerId") Long developerId) {
+        developerService.developerDelete(developerId);
 
         return new ResponseEntity<>("개발사 삭제", HttpStatus.OK);
     }

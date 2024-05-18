@@ -9,14 +9,14 @@ public record GameInfoResDto(
         String name,
         String genre,
         Platform platform,
-        String developer
+        String developerName
 ) {
     public static GameInfoResDto from(Game game) {
         return GameInfoResDto.builder()
                 .name(game.getName())
                 .genre(game.getGenre())
                 .platform(game.getPlatform())
-                .developer(game.getDeveloper().getName())
+                .developerName(game.getDeveloper().getName())
                 .build();
     }
 }

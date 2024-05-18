@@ -52,24 +52,24 @@ public class DeveloperService {
     }
 
     // 개발사 조회(하나)
-    public DeveloperInfoResDto developerFindOne(String developerName) {
-        Developer developer = developerRepository.findByName(developerName).orElseThrow(IllegalArgumentException::new);
+    public DeveloperInfoResDto developerFindOne(Long developerId) {
+        Developer developer = developerRepository.findById(developerId).orElseThrow(IllegalArgumentException::new);
 
         return DeveloperInfoResDto.from(developer);
     }
 
     // 개발사 업데이트(이름, 국가, 설립일)
     @Transactional
-    public void developerUpdate(String developerName, DeveloperUpdateReqDto developerUpdateReqDto) {
-        Developer developer = developerRepository.findByName(developerName).orElseThrow(IllegalArgumentException::new);
+    public void developerUpdate(Long developerId, DeveloperUpdateReqDto developerUpdateReqDto) {
+        Developer developer = developerRepository.findById(developerId).orElseThrow(IllegalArgumentException::new);
 
         developer.update(developerUpdateReqDto);
     }
 
     // 개발사 삭제
     @Transactional
-    public void developerDelete(String developerName) {
-        Developer developer = developerRepository.findByName(developerName).orElseThrow(IllegalArgumentException::new);
+    public void developerDelete(Long developerId) {
+        Developer developer = developerRepository.findById(developerId).orElseThrow(IllegalArgumentException::new);
 
         developerRepository.delete(developer);
     }
