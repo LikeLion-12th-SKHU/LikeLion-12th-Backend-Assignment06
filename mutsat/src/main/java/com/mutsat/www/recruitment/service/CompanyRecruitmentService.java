@@ -53,7 +53,7 @@ public class CompanyRecruitmentService {
 	public RecruitmentUpdateResponseDto updateRecruitmentNotice(Long id,RecruitmentUpdateRequestDto updateRequestDto) {
 		CompanyRecruitment recruitmentNotice = companyRecruitmentRepository.findById(id)
 			.orElseThrow(IllegalAccessError::new);
-		return RecruitmentUpdateResponseDto.from(nullcheckOfUpdateRequestDto(recruitmentNotice, updateRequestDto));
+		return RecruitmentUpdateResponseDto.from(nullcheckAndUpdateRequestDto(recruitmentNotice, updateRequestDto));
 	}
 
 	@Transactional
@@ -87,7 +87,7 @@ public class CompanyRecruitmentService {
 		return RecruitmentDto.from(companyRecruitment);
 	}
 
-	private CompanyRecruitment nullcheckOfUpdateRequestDto(CompanyRecruitment recruitmentNotice,
+	private CompanyRecruitment nullcheckAndUpdateRequestDto(CompanyRecruitment recruitmentNotice,
 		RecruitmentUpdateRequestDto updateRequestDto) {
 		if (updateRequestDto.content() != null) {
 			recruitmentNotice.updateContent(updateRequestDto.content());
