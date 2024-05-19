@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d84f589f-ed2a-4de0-bf4c-45e94b328f4b" name="변경" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="likelion-crud2" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Kotlin Class" />
+        <option value="Record" />
+        <option value="Class" />
+        <option value="HTTP Request" />
+      </list>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <hideBySeverity>
+      <option value="11" />
+      <option value="12" />
+      <option value="13" />
+      <option value="14" />
+      <option value="15" />
+      <option value="16" />
+    </hideBySeverity>
+    <option name="showPreview" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2gdU8gspqjmLHHa8jSIuqc393Mq" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.likelion-crud2 빌드.executor": "Run",
+    "HTTP 요청.userFindAll 내 전체.executor": "Run",
+    "HTTP 요청.userFindOne 내 전체.executor": "Run",
+    "HTTP 요청.userSave 내 전체.executor": "Run",
+    "HTTP 요청.userUpdate 내 전체.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.LikelionCrud2Application.executor": "Run",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/82108/Desktop/수업, 발표 자료/Z01. 동아리 - 멋사/02. Submit/LikeLion-12th-Backend-Assignment06/Jangsuuu/likelion-crud2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\82108\Desktop\수업, 발표 자료\Z01. 동아리 - 멋사\02. Submit\LikeLion-12th-Backend-Assignment06\Jangsuuu\likelion-crud2\src\main\java\org\likelion\likelioncrud2\user" />
+      <recent name="C:\Users\82108\Desktop\수업, 발표 자료\Z01. 동아리 - 멋사\02. Submit\LikeLion-12th-Backend-Assignment06\Jangsuuu\likelion-crud2\src\main\java\org\likelion\likelioncrud2" />
+      <recent name="C:\Users\82108\Desktop\수업, 발표 자료\Z01. 동아리 - 멋사\02. Submit\LikeLion-12th-Backend-Assignment06\Jangsuuu\likelion-crud2\src\main\java\org\likelion\likelioncrud2\book\domain" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.likelion.likelioncrud2.user.api.dto" />
+      <recent name="org.likelion.likelioncrud2.rent.api.dto.response" />
+      <recent name="org.likelion.likelioncrud2.rent.api.dto.request" />
+      <recent name="org.likelion.likelioncrud2.user.api.dto.request" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.LikelionCrud2Application">
+    <configuration name="userFindAll 내 전체" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/main/java/org/likelion/likelioncrud2/user/http/userFindAll.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="userFindOne 내 전체" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/main/java/org/likelion/likelioncrud2/user/http/userFindOne.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="userSave 내 전체" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/main/java/org/likelion/likelioncrud2/user/http/userSave.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="userUpdate 내 전체" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/src/main/java/org/likelion/likelioncrud2/user/http/userUpdate.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="LikelionCrud2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="likelion-crud2.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.likelion.likelioncrud2.LikelionCrud2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP 요청.userUpdate 내 전체" />
+        <item itemvalue="HTTP 요청.userFindAll 내 전체" />
+        <item itemvalue="HTTP 요청.userFindOne 내 전체" />
+        <item itemvalue="HTTP 요청.userSave 내 전체" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="d84f589f-ed2a-4de0-bf4c-45e94b328f4b" name="변경" comment="" />
+      <created>1716026791980</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716026791980</updated>
+      <workItem from="1716026793004" duration="20235000" />
+      <workItem from="1716047775683" duration="577000" />
+      <workItem from="1716048424448" duration="3093000" />
+      <workItem from="1716079996930" duration="584000" />
+      <workItem from="1716080687952" duration="2205000" />
+      <workItem from="1716083516827" duration="1951000" />
+      <workItem from="1716086206847" duration="5714000" />
+      <workItem from="1716092097682" duration="2704000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
