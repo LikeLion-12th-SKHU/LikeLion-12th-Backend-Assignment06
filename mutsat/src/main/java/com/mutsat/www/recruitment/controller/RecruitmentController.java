@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,8 +54,8 @@ public class RecruitmentController {
 	}
 
 	@DeleteMapping("/{recruitmentId}")
-	public ResponseEntity<String> deleteByRecruitment(@PathVariable(value = "recruitmentId") Long id){
-		companyRecruitmentService.deleteRecruitment(id);
-		return new ResponseEntity<>(id+"번 모집공고 삭제 완료.", HttpStatus.OK);
+	public ResponseEntity<String> withdrawApply(@PathVariable(value = "recruitmentId") Long recruitmentId, @RequestHeader("X-AUTH-ID") Long memberId){
+		companyRecruitmentService.withdrawApply(recruitmentId,memberId);
+		return new ResponseEntity<>(recruitmentId+"번 모집공고 지원 취소 완료.", HttpStatus.OK);
 	}
 }

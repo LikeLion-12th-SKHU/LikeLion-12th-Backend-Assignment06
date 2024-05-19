@@ -26,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+//crud -> 생성, 조회 -> 조회일 때만 쓰는거., 수정, 삭제가 있어요.
 public class CompanyRecruitmentService {
 	private final MutsatMemberRepository memberRepository;
 	private final CompanyRecruitmentRepository companyRecruitmentRepository;
@@ -38,9 +39,9 @@ public class CompanyRecruitmentService {
 	@Transactional
 	public void saveRecruitmentNotice(RecruitmentSaveRequestDto recruitmentRequestDto) {
 		Company company = companyRepository.findById(recruitmentRequestDto.companyId()).orElseThrow();
-		CompanyRecruitment recruitmentNotice = CompanyRecruitment.builder()
+		CompanyRecruitment recruitmentNotice = CompanyRecruitment.builder() //자바에서만
 			.company(company)
-			.position(recruitmentRequestDto.content())
+			.position(recruitmentRequestDto.position())
 			.recruitmentCompensation(recruitmentRequestDto.money())
 			.content(recruitmentRequestDto.content())
 			.skills(recruitmentRequestDto.skills())
@@ -48,7 +49,7 @@ public class CompanyRecruitmentService {
 		companyRecruitmentRepository.save(recruitmentNotice);
 	}
 
-	@Transactional
+	@Transactional //회사측에서 자신이 모집공고를 올렸는데 이거를 어, 백엔드개발자를 뽑을라햇는데 프론트로 올렷네 -> 고치고싶다.
 	public RecruitmentUpdateResponseDto updateRecruitmentNotice(Long id,RecruitmentUpdateRequestDto updateRequestDto) {
 		CompanyRecruitment recruitmentNotice = companyRecruitmentRepository.findById(id)
 			.orElseThrow(IllegalAccessError::new);
@@ -68,10 +69,10 @@ public class CompanyRecruitmentService {
 	}
 
 	@Transactional
-	public void deleteRecruitment(Long recruitmentId){
-		CompanyRecruitment companyRecruitment =  companyRecruitmentRepository.findById(recruitmentId)
-			.orElseThrow(IllegalArgumentException::new);
-		statusRepository.deleteByCompanyRecruitment(companyRecruitment);
+	public void withdrawApply(Long recruitmentId, Long memberId){
+		MutsatMember member = memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
+		CompanyRecruitment recruitment = companyRecruitmentRepository.findById(recruitmentId).orElseThrow(IllegalArgumentException::new);
+		statusRepository.deleteByMemberAndCompanyRecruitment(member,recruitment);
 	}
 
 	public RecruitmentListDto findAllRecruitment() {
