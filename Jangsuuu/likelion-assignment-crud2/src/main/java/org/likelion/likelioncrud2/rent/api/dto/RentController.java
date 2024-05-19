@@ -25,15 +25,15 @@ public class RentController {
     }
 
     // 대출 현황 불러오기
-    @GetMapping("/{userId}")
-    public ResponseEntity<RentListResDto> rentFindAll(@PathVariable("userId") Long userId) {
-        RentListResDto rentListResDto = rentService.rentFindAll(userId);
+    @GetMapping("/{studentId}")
+    public ResponseEntity<RentListResDto> rentFindAll(@PathVariable("studentId") Long studentId) {
+        RentListResDto rentListResDto = rentService.rentFindAll(studentId);
         return new ResponseEntity<>(rentListResDto, HttpStatus.OK);
     }
 
     // 대출 현황 수정하기
-    @PatchMapping("/{rentId}")
-    public ResponseEntity<String> rentUpdate(@PathVariable("rentId") Long rentId, @RequestBody RentUpdateReqDto rentUpdateReqDto) {
+    @PatchMapping("/{studentId}")
+    public ResponseEntity<String> rentUpdate(@PathVariable("studentId") Long rentId, @RequestBody RentUpdateReqDto rentUpdateReqDto) {
         rentService.rentUpdate(rentId, rentUpdateReqDto);
         return new ResponseEntity<>("대출 현황 수정 완료!", HttpStatus.OK);
     }
@@ -44,9 +44,9 @@ public class RentController {
         return new ResponseEntity<>("대출 현황 삭제 완료!", HttpStatus.OK);
     }
 
-    @DeleteMapping("/{userId}/Delete")
-    public ResponseEntity<String> rentDeleteAll(@PathVariable("userId") Long userId) {
-        rentService.rentDeleteAll(userId);
+    @DeleteMapping("/{studentId}/Delete")
+    public ResponseEntity<String> rentDeleteAll(@PathVariable("studentId") Long studentId) {
+        rentService.rentDeleteAll(studentId);
         return new ResponseEntity<>("전체 삭제 완료!", HttpStatus.OK);
     }
 }

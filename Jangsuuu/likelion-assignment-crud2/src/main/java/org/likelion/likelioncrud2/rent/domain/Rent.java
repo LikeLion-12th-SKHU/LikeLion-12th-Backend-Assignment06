@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.likelion.likelioncrud2.rent.api.dto.request.RentUpdateReqDto;
-import org.likelion.likelioncrud2.user.domain.User;
+import org.likelion.likelioncrud2.student.domain.Student;
 
 @Entity // 이 클래스가 엔티티임을 알림, JPA에서 정의된 필드들을 바탕으로 데이터 베이스에 테이블을 만들어 준다.
 @Getter // get 메서드를 사용할 수 있게 한다.
@@ -25,17 +25,18 @@ public class Rent {
 
     // 다대일, 한 사람이 여러 권의 책을 빌릴 수 있으므로, (연관된 엔티티를 프록시로 조회, 사용 시 프록시를 초기화하면서 DB를 조회)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id") //외래키의 매핑, 매핑할 외래키의 이름을 입력한다.
-    private User user;
+    @JoinColumn(name = "student_id") //외래키의 매핑, 매핑할 외래키의 이름을 입력한다.
+    private Student student;
 
     // 엔티티 객체 생성 시 빌더 패턴을 사용하여 만들 수 있도록 지정하는 어노테이션
     @Builder
-    private Rent(String rentTime, String returnTime, String bookName, User user) {
+    private Rent(Long rentId, String rentTime, String returnTime, String bookName, Student student) {
         // 의존관계 설정
+        this.rentId = rentId;
         this.rentTime = rentTime;
         this.returnTime = returnTime;
         this.bookName = bookName;
-        this.user = user;
+        this.student = student;
     }
 
     public void updateRentInfo(RentUpdateReqDto rentUpdateReqDto) {

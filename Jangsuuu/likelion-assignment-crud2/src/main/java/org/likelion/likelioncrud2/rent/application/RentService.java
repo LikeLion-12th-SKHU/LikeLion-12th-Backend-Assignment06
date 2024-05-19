@@ -7,8 +7,8 @@ import org.likelion.likelioncrud2.rent.api.dto.response.RentInfoResDto;
 import org.likelion.likelioncrud2.rent.api.dto.response.RentListResDto;
 import org.likelion.likelioncrud2.rent.domain.Rent;
 import org.likelion.likelioncrud2.rent.domain.repository.RentRepository;
-import org.likelion.likelioncrud2.user.domain.User;
-import org.likelion.likelioncrud2.user.domain.repository.UserRepository;
+import org.likelion.likelioncrud2.student.domain.Student;
+import org.likelion.likelioncrud2.student.domain.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,25 +19,26 @@ import java.util.List;
 // 실행 중 예외가 발생하면 해당 메서드를 실행하면서 수행한 쿼리들을 모두 롤백함.(읽기 전용)
 @Transactional(readOnly = true)
 public class RentService {
-    private final UserRepository userRepository;
+    private final StudentRepository studentRepository;
     private final RentRepository rentRepository;
 
-    public RentService(UserRepository userRepository,RentRepository rentRepository) {
-        this.userRepository = userRepository;
+    public RentService(StudentRepository studentRepository, RentRepository rentRepository) {
+        this.studentRepository = studentRepository;
         this.rentRepository = rentRepository;
     }
 
     // 생성
     @Transactional
     public void rentSave(RentSaveReqDto rantSaveReqDto) {
-        User user = userRepository.findById(rantSaveReqDto.userId())
+        Student student = studentRepository.findById(rantSaveReqDto.studentId())
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 학생이 없습니다."));
 
         Rent rent = Rent.builder()
+                .rentId(rantSaveReqDto.RentId())
                 .rentTime(rantSaveReqDto.rentTime())
                 .returnTime(rantSaveReqDto.returnTime())
                 .bookName(rantSaveReqDto.bookName())
-                .user(user)
+                .student(student)
                 .build();
 
         rentRepository.save(rent);
@@ -45,11 +46,11 @@ public class RentService {
 
     // 전부 불러오기
     @Transactional
-    public RentListResDto rentFindAll(Long userId) {
-        User user = userRepository.findById(userId)
+    public RentListResDto rentFindAll(Long studentId) {
+        Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다."));
 
-        List<Rent> rents = rentRepository.findByUser(user);
+        List<Rent> rents = rentRepository.findByStudent(student);
         List<RentInfoResDto> rentInfoResDtoList = rents.stream()
                 .map(RentInfoResDto::from).toList();
 
@@ -58,8 +59,8 @@ public class RentService {
 
     // 업데이트
     @Transactional
-    public void rentUpdate(Long rentId, RentUpdateReqDto rentUpdateReqDto) {
-        Rent rent = rentRepository.findById(rentId)
+    public void rentUpdate(Long studentId, RentUpdateReqDto rentUpdateReqDto) {
+        Rent rent = rentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다."));
 
         rent.updateRentInfo(rentUpdateReqDto);

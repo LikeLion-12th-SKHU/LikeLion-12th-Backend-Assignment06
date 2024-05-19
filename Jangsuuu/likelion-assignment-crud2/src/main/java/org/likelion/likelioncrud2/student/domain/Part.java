@@ -1,4 +1,4 @@
-package org.likelion.likelioncrud2.user.domain;
+package org.likelion.likelioncrud2.student.domain;
 
 public enum Part {
     FRONTEND, BACKEND, PM, QC

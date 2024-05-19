@@ -1,1 +1,10 @@
-POST
+POST http://localhost:8080/rent/save
+Content-Type: application/json
+
+{
+  "studentId": 20,
+  "rentId" : 8,
+  "rentTime": "20240522",
+  "returnTime": "20240529",
+  "bookName": "정보처리기사 필기"
+}
