@@ -1,5 +1,6 @@
 .idea
 .gradle
-src/main/resources/
+src/main/resources/application-prod.yaml
 build
 gradle
+

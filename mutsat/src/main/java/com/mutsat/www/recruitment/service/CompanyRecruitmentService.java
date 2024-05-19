@@ -51,7 +51,7 @@ public class CompanyRecruitmentService {
 	@Transactional
 	public RecruitmentUpdateResponseDto updateRecruitmentNotice(Long id,RecruitmentUpdateRequestDto updateRequestDto) {
 		CompanyRecruitment recruitmentNotice = companyRecruitmentRepository.findById(id)
-			.orElseThrow();
+			.orElseThrow(IllegalAccessError::new);
 		return RecruitmentUpdateResponseDto.from(nullcheckOfUpdateRequestDto(recruitmentNotice, updateRequestDto));
 	}
 
@@ -65,6 +65,13 @@ public class CompanyRecruitmentService {
 			.build();
 		statusRepository.save(recruitmentStatus);
 		return ApplyResponseDto.of(recruitmentStatus.getMember().getId(), recruitmentStatus.getCompanyRecruitment().getId());
+	}
+
+	@Transactional
+	public void deleteRecruitment(Long recruitmentId){
+		CompanyRecruitment companyRecruitment =  companyRecruitmentRepository.findById(recruitmentId)
+			.orElseThrow(IllegalArgumentException::new);
+		statusRepository.deleteByCompanyRecruitment(companyRecruitment);
 	}
 
 	public RecruitmentListDto findAllRecruitment() {

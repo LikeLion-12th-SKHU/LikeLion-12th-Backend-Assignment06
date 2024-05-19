@@ -2,6 +2,7 @@ package com.mutsat.www.recruitment.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,15 @@ import lombok.RequiredArgsConstructor;
 public class RecruitmentController {
 	private final CompanyRecruitmentService companyRecruitmentService;
 
+	@GetMapping
+	public ResponseEntity<RecruitmentListDto> findAllRecruitment(){
+		return new ResponseEntity<>(companyRecruitmentService.findAllRecruitment(), HttpStatus.OK) ;
+	}
+	@GetMapping("/{recruit_id}")
+	public ResponseEntity<RecruitmentDto> findAllRecruitment(@PathVariable(value = "recruit_id") Long id){
+		return new ResponseEntity<>(companyRecruitmentService.findByRecruitmentId(id), HttpStatus.OK);
+	}
+
 	@PostMapping
 	public ResponseEntity<String> saveRecruitment(@RequestBody RecruitmentSaveRequestDto saveRequestDto){
 		companyRecruitmentService.saveRecruitmentNotice(saveRequestDto);
@@ -42,12 +52,9 @@ public class RecruitmentController {
 		return new ResponseEntity<>(companyRecruitmentService.updateRecruitmentNotice(id, updateRequestDto), HttpStatus.OK);
 	}
 
-	@GetMapping
-	public ResponseEntity<RecruitmentListDto> findAllRecruitment(){
-		return new ResponseEntity<>(companyRecruitmentService.findAllRecruitment(), HttpStatus.OK) ;
-	}
-	@GetMapping("/{recruit_id}")
-	public ResponseEntity<RecruitmentDto> findAllRecruitment(@PathVariable(value = "recruit_id") Long id){
-		return new ResponseEntity<>(companyRecruitmentService.findByRecruitmentId(id), HttpStatus.OK);
+	@DeleteMapping("/{recruitmentId}")
+	public ResponseEntity<String> deleteByRecruitment(@PathVariable(value = "recruitmentId") Long id){
+		companyRecruitmentService.deleteRecruitment(id);
+		return new ResponseEntity<>(id+"번 모집공고 삭제 완료.", HttpStatus.OK);
 	}
 }
