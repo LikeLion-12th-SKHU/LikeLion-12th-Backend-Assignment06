@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-// 캡슐화된 상태 없이 모델에서 단독으로 독립된 인터페이스로 제공되는 작업(?)
+// 이 어노테이션은 주로 서비스 인터페이스를 구현하는 클래스에서 사용
 @Service
 // 실행 중 예외가 발생하면 해당 메서드를 실행하면서 수행한 쿼리들을 모두 롤백함.(읽기 전용)
 @Transactional(readOnly = true)
@@ -28,7 +28,6 @@ public class RentService {
     }
 
     // 생성
-    @Transactional
     public void rentSave(RentSaveReqDto rantSaveReqDto) {
         Student student = studentRepository.findById(rantSaveReqDto.studentId())
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 학생이 없습니다."));
@@ -45,7 +44,6 @@ public class RentService {
     }
 
     // 전부 불러오기
-    @Transactional
     public RentListResDto rentFindAll(Long studentId) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다."));
@@ -58,7 +56,6 @@ public class RentService {
     }
 
     // 업데이트
-    @Transactional
     public void rentUpdate(Long studentId, RentUpdateReqDto rentUpdateReqDto) {
         Rent rent = rentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다."));
@@ -67,7 +64,6 @@ public class RentService {
     }
 
     // 삭제
-    @Transactional
     public void rentDelete(Long rentId) {
         Rent rent = rentRepository.findById(rentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다."));
@@ -76,7 +72,6 @@ public class RentService {
     }
 
     // 전부 삭제
-    @Transactional
     public void rentDeleteAll(Long rentId) {
         rentRepository.findById(rentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다."));

@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-// 캡슐화된 상태 없이 모델에서 단독으로 독립된 인터페이스로 제공되는 작업(?)
+
+
+// 이 어노테이션은 주로 서비스 인터페이스를 구현하는 클래스에서 사용
 @Service
 // 실행 중 예외가 발생하면 해당 메서드를 실행하면서 수행한 쿼리들을 모두 롤백함.(읽기 전용)
 @Transactional(readOnly = true)
@@ -23,7 +25,6 @@ public class StudentService {
     }
 
     // 생성
-    @Transactional
     public void studentSave(StudentSaveReqDto studentSaveReqDto) {
         Student student = Student.builder()
                 .name(studentSaveReqDto.name())
@@ -50,7 +51,6 @@ public class StudentService {
     }
 
     // 업데이트
-    @Transactional
     public void studentUpdate(Long studentId, StudentUpdateReqDto studentUpdateReqDto) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다. ID : " + studentId));
@@ -59,7 +59,6 @@ public class StudentService {
     }
 
     // 삭제
-    @Transactional
     public void studentDelete(Long studentId) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 사용자가 없습니다. ID : " + studentId));
