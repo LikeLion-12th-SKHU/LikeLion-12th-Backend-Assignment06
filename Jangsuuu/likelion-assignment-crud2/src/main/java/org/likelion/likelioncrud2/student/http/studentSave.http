@@ -1,0 +1,8 @@
+POST http://localhost:8080/student/save
+Content-Type: application/json
+
+{
+  "name" : "박찬호",
+  "part" : "BACKEND"
+}
+
