@@ -1,0 +1,10 @@
+DELETE http://localhost:8080/rent/4
+Content-Type: application/json
+
+{
+  "rentId": 4,
+  "rentTime": "20240529",
+  "returnTime": "20240603",
+  "bookName": "쉽게 배우는 C 프로그래밍"
+}
+
